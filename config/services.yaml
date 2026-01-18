@@ -1,0 +1,7 @@
+# services.yaml
+
+parameters:
+  id.path: "%env(ID_RESOURCE_PATH)%"
+
+imports:
+  - { resource: "packages/address.yaml" }
