@@ -1,0 +1,22 @@
+# exclude everything except directory
+
+.DS_Store
+.amazonq
+.git
+.vscode
+.marscode
+.phpunit.cache
+.env.test
+GEMINI.md
+composer.lock
+vendor
+local-dev
+node_modules
+package.json
+package-lock.json
+nodemon.json
+scripts
+source/*
+!source/data/
+coverage
+env-path.php
