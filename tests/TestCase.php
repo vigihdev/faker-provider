@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vigihdev\MockForge\Tests;
+namespace Vigihdev\FakerProvider\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
