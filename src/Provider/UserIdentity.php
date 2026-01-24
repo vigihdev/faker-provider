@@ -13,6 +13,7 @@ use Vigihdev\Support\Text;
 
 final class UserIdentity extends AbstractProvider
 {
+    private array $usedPhones = [];
 
     public function __construct(
         private readonly DtoTransformerInterface $transformer,
@@ -189,10 +190,15 @@ final class UserIdentity extends AbstractProvider
 
     private function generateUniquePhone(): string
     {
-        $prefixes = ['0811', '0812', '0813', '0816', '0817', '0852', '0853', '0878', '0896', '0898'];
-        $middle = sprintf('%03d', rand(100, 999));
-        $last = sprintf('%03d', rand(100, 999));
+        do {
+            $prefixes = ['0811', '0812', '0813', '0816', '0817', '0852', '0853', '0878', '0896', '0898'];
+            $middle = sprintf('%03d', rand(100, 999));
+            $last = sprintf('%03d', rand(100, 999));
 
-        return $this->faker->unique()->randomElement($prefixes) . ' ' . $middle . ' ' . $last;
+            $phone = $this->faker->randomElement($prefixes) . ' ' . $middle . ' ' . $last;
+        } while (in_array($phone, $this->usedPhones));
+
+        $this->usedPhones[] = $phone;
+        return $phone;
     }
 }
