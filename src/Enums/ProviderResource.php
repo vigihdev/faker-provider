@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Vigihdev\FakerProvider\Enums;
+namespace Vigihdev\Faker\Enums;
 
-use Vigihdev\FakerProvider\DTOs\Address\{ProvinceDto, VillageDto};
+use Vigihdev\Faker\DTOs\{ReviewRatingDto, UserIdentityDto};
 
 enum ProviderResource: string
 {
-    case PROVINCE = 'address/province';
-    case VILLAGE = 'address/village';
+    case USER_IDENTITY = 'resources/user-identities';
+    case REVIEW_RATING = 'resources/review-ratings';
 
     public function getDtoClass(): string
     {
         return match ($this) {
-            self::VILLAGE => VillageDto::class,
-            self::PROVINCE => ProvinceDto::class,
+            self::USER_IDENTITY => UserIdentityDto::class,
+            self::REVIEW_RATING => ReviewRatingDto::class,
         };
     }
 

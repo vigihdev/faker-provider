@@ -17,6 +17,5 @@ package-lock.json
 nodemon.json
 scripts
 source/*
-!source/data/
 coverage
 env-path.php

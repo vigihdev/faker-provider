@@ -1,0 +1,16 @@
+# packages/provider.yaml
+
+services:
+  review_rating.provider:
+    tags: ["faker.provider"]
+    class: 'Vigihdev\Faker\Provider\ReviewRating'
+    arguments:
+      $transformer: "@review_rating.dto"
+      $faker: "@faker"
+
+  user_identity.provider:
+    tags: ["faker.provider"]
+    class: 'Vigihdev\Faker\Provider\UserIdentity'
+    arguments:
+      $transformer: "@user_identity.dto"
+      $faker: "@faker"

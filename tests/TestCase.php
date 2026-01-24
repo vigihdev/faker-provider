@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vigihdev\FakerProvider\Tests;
+namespace Vigihdev\Faker\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 

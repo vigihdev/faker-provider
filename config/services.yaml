@@ -1,7 +1,22 @@
 # services.yaml
 
 parameters:
-  id.path: "%env(ID_RESOURCE_PATH)%"
+  resources: "%env(PROJECT_DIR)%/resources"
 
 imports:
-  - { resource: "packages/address.yaml" }
+  - { resource: "_proto.yaml" }
+  - { resource: "packages/dto-transformer.yaml" }
+  - { resource: "packages/provider.yaml" }
+
+services:
+  Vigihdev\Faker\Contracts\ServiceProviderInterface:
+    public: true
+    class: 'Vigihdev\Faker\ServiceProvider'
+    arguments:
+      $providers: !tagged_iterator "faker.provider"
+
+  Vigihdev\Faker\Contracts\DtoTransformerManagerInterface:
+    public: true
+    class: 'Vigihdev\Faker\DtoTransformerManager'
+    arguments:
+      $dtos: !tagged_iterator "dto_transformer"

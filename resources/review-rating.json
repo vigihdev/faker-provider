@@ -1,0 +1,32 @@
+{
+    "items": {
+        "Elektronik": [
+            "Samsung Galaxy A55 5G",
+            "Xiaomi Redmi Note 13 Pro",
+            "Earphone TWS ANC Pro",
+            "Smartwatch M6 Fitness",
+            "Laptop ASUS TUF Gaming A15"
+        ],
+        "Fashion": [
+            "Kaos Oversize Cotton Combed 30s",
+            "Celana Jeans Slim Fit Pria",
+            "Sneakers Casual Running Hitam",
+            "Jaket Bomber Waterproof",
+            "Hijab Instan Ceruti Premium"
+        ],
+        "Kecantikan": [
+            "Serum Niacinamide 10% + Zinc",
+            "Sunscreen SPF 50 PA++++",
+            "Lipstik Matte Longlasting Ruby",
+            "Masker Wajah Sheet Collagen",
+            "Body Lotion Whitening Aloe Vera"
+        ],
+        "Makanan & Minuman": [
+            "Kopi Arabika Single Origin 250g",
+            "Keripik Singkong Balado Pedas",
+            "Cokelat Dark 70% Cocoa",
+            "Mie Instan Soto Betawi",
+            "Susu Oatmeal Rendah Gula"
+        ]
+    }
+}

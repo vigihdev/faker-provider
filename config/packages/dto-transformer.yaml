@@ -1,0 +1,23 @@
+# packages/dto-transformer.yaml
+
+services:
+  review_rating.dto:
+    parent: "dto_transformer.prototype"
+    tags: ["dto_transformer"]
+    arguments:
+      $filepath: "%resources%/review-rating.json"
+      $dtoClass: 'Vigihdev\Faker\DTOs\ReviewRatingDto'
+
+  regiones.dto:
+    parent: "dto_transformer.prototype"
+    tags: ["dto_transformer"]
+    arguments:
+      $filepath: "%resources%/regiones.json"
+      $dtoClass: 'Vigihdev\Faker\DTOs\RegionDto'
+
+  user_identity.dto:
+    parent: "dto_transformer.prototype"
+    tags: ["dto_transformer"]
+    arguments:
+      $filepath: "%resources%/user-identities.json"
+      $dtoClass: 'Vigihdev\Faker\DTOs\UserIdentityDto'

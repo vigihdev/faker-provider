@@ -1,0 +1,17 @@
+# _proto.yaml
+services:
+  dto_transformer.prototype:
+    abstract: true
+    class: 'Vigihdev\Faker\DtoTransformer'
+    arguments:
+      $filepath: ~
+      $dtoClass: ~
+
+  _instanceof:
+    Vigihdev\Faker\Contracts\ProviderInterface:
+      tags: ["faker.provider"]
+
+  faker:
+    class: Faker\Generator
+    factory: ['Faker\Factory', "create"]
+    arguments: ["id_ID"]
