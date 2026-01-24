@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Vigihdev\Faker;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\Filesystem\Path;
 use Vigihdev\Faker\Exceptions\FakerException;
@@ -12,6 +13,8 @@ use VigihDev\SymfonyBridge\Config\ConfigBridge;
 final class Kernel
 {
 
+    private ContainerBuilder $container;
+    private ConfigBridge $config;
     private const PACKAGE_NAME = 'faker-provider';
     private const VENDOR_PACKAGE_NAME = 'vendor/vigihdev/faker-provider';
 
@@ -50,7 +53,7 @@ final class Kernel
         $dotEnv->populate($envDefaults, true);
 
 
-        $container = ConfigBridge::boot(
+        $config = ConfigBridge::boot(
             basePath: $basepath,
             configDir: 'config',
             enableAutoInjection: true
@@ -59,9 +62,16 @@ final class Kernel
         foreach ($this->envFilenames as $filename) {
             $envPath = Path::join($basepath, $filename);
             if (is_file($envPath)) {
-                $container->loadEnv($envPath);
+                $config->loadEnv($envPath);
             }
         }
+
+        $this->config = $config;
+    }
+
+    public function getConfig(): ConfigBridge
+    {
+        return $this->config;
     }
 
     private function actualBasepath(string $basepath): string
