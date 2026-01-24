@@ -47,13 +47,13 @@ final class UserIdentity extends AbstractProvider
             $username = $this->generateUniqueUsername($fullName, $index);
         } while (in_array($username, $usedUsernames));
 
-        $email = $this->generateEmailFromUsername($username, $fullName);
+        // $email = $this->generateEmailFromUsername($username, $fullName);
         return [
-            'id' => $faker->randomElement(range(10, 100)),
-            'username' => $username,
-            'email' => $email,
+            'id' => $faker->unique()->numberBetween(1000, 9999),
+            'username' => $this->generateUniqueUsername($fullName, $index),
+            'email' => $this->generateEmailFromUsername($username, $fullName),
             'full_name' => $fullName,
-            'phone_number' => $faker->randomElement($user->getPhoneNumbers()),
+            'phone_number' => $this->generateUniquePhone(),
             'date_of_birth' => $faker->dateTimeBetween('-50 years', '-18 years')->format('Y-m-d'),
             'gender' => $gender,
             'address' => $faker->randomElement($region->getRoutes()),
@@ -185,5 +185,14 @@ final class UserIdentity extends AbstractProvider
         ];
 
         return $this->faker->randomElement($patterns);
+    }
+
+    private function generateUniquePhone(): string
+    {
+        $prefixes = ['0811', '0812', '0813', '0816', '0817', '0852', '0853', '0878', '0896', '0898'];
+        $middle = sprintf('%03d', rand(100, 999));
+        $last = sprintf('%03d', rand(100, 999));
+
+        return $this->faker->unique()->randomElement($prefixes) . ' ' . $middle . ' ' . $last;
     }
 }
