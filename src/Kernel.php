@@ -74,6 +74,11 @@ final class Kernel
         return $this->config;
     }
 
+    public function getContainer(): ContainerBuilder
+    {
+        return $this->config->container();
+    }
+
     private function actualBasepath(string $basepath): string
     {
 
